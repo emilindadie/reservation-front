@@ -1,0 +1,13 @@
+<div class="home-container">
+  <h1>Affluences</h1>
+  <h3>Check if the ressource is available</h3>
+  <form [formGroup]="form" (ngSubmit)="check(form.value)">
+    <div class="home-container-form-input">
+      <input type="date" formControlName="date">
+      <input type="time" formControlName="time">
+    </div>
+    <button class="home-container-form-submit-btn" [disabled]="!form.valid" type="submit">Check availability</button>
+  </form>
+</div>
+
+
