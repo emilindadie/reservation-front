@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs';
+import { IApiResponse } from '../models/api-response.model.i';
 
 @Injectable()
 export class ReservationService {
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient) { }
 
-    }
-
-
-    check(reservationId, datetime: string) {
-
-        //     http://ip:port/resource/1337/available?datetime=2020-03-19T12:00:00
-
-        //     return this.http.get(`localhost:8080/resource/avai`, { params: {
-        //         datetime
-        //     }})
+    check(datetime: string): Observable<IApiResponse> {
+        return this.http.get<IApiResponse>('http://localhost:8080/resource/1337/available', {
+            params: {
+                datetime
+            }
+        });
     }
 }
+
